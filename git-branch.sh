@@ -48,3 +48,6 @@ else
     git commit -m "$commitMessage"
     git push $upStream origin $branchName
 fi
+
+
+# Git automation
