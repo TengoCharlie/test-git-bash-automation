@@ -36,10 +36,15 @@ if [ "$upStreamTemp" == "Y" ]; then
     echo -e "Your --set-upstream branch is: --set-upstream"
     upStream="--set-upstream"
 fi
-
-
-git branch $branchName
-git checkout $branchName
-git add $addFileDefault
-git commit -m "$commitMessage"
-git push $upStream origin $branchName
+if [ "$branchName" == "main" ]; then
+    git add $addFileDefault
+    git commit -m "$commitMessage"
+    git branch -M main
+    git push -u origin main
+else 
+    git branch $branchName
+    git checkout $branchName
+    git add $addFileDefault
+    git commit -m "$commitMessage"
+    git push $upStream origin $branchName
+fi
